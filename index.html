@@ -35,12 +35,12 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
     body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
+    /* تعديل الترويسة لتكون طبيعية في أعلى الصفحة فقط */
     .site-header {
-      position: sticky; top: 0; z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
+      position: relative;
+      background: #ffffff;
       border-bottom: 1px solid var(--border-color);
-      padding: 0.85rem 1.5rem;
+      padding: 1rem 1.5rem;
     }
     .nav-container { max-width: 1050px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     .brand-title { font-size: 1.25rem; font-weight: 800; color: var(--primary); cursor: pointer; }
@@ -58,7 +58,7 @@
     .nav-btn.active { background-color: var(--primary); color: #fff; }
     .nav-btn.lang-btn { border: 1px solid var(--border-color); color: var(--text-muted); }
 
-    .main-layout { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; min-height: calc(100vh - 180px); }
+    .main-layout { max-width: 880px; margin: 0 auto; padding: 2rem 1.25rem 4rem; min-height: calc(100vh - 180px); }
     
     .badge-pill {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -67,7 +67,7 @@
       padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.25rem;
     }
 
-    .hero-section { text-align: center; padding: 1.5rem 1rem 2.5rem; }
+    .hero-section { text-align: center; padding: 1rem 1rem 2.5rem; }
     .hero-title { font-size: 2.4rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
     .hero-title span { color: var(--accent-gold); }
     .hero-series-title { font-size: 1.5rem; font-weight: 700; color: var(--accent-gold-hover); margin-bottom: 1.2rem; }
@@ -598,7 +598,7 @@
             <i data-lucide="zap" style="color: var(--accent-gold);"></i> قسم: مواقف سريعة واختبار استجابة
           </div>
 
-          <!-- موقف 1: تم جعل الخيار الصحيح في الترتيب الثاني -->
+          <!-- موقف 1 -->
           <div class="form-group">
             <label class="field-label">منشور عن الكتيّب لم يحصل على أي تفاعل تقريبًا. ما أول خطوة تقومين بها؟ <span class="req">*</span></label>
             <div class="radio-group">
@@ -608,7 +608,7 @@
             </div>
           </div>
 
-          <!-- موقف 2: تم جعل الخيار الصحيح في الترتيب الثالث -->
+          <!-- موقف 2 -->
           <div class="form-group">
             <label class="field-label">زميلة خجولة لديها كتابة رائعة لكنها ترفض تقديمها. ماذا تفعلين؟ <span class="req">*</span></label>
             <div class="radio-group">
@@ -618,7 +618,7 @@
             </div>
           </div>
 
-          <!-- موقف 3: الخيار الصحيح في الترتيب الأول -->
+          <!-- موقف 3 -->
           <div class="form-group">
             <label class="field-label">ما الأهم في نص إعلان عن عدد جديد؟ <span class="req">*</span></label>
             <div class="radio-group">
