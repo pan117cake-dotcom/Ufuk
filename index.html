@@ -1,34 +1,485 @@
-سلسلة كُتيبات
-أُفق
-ثانوية النجف الأشرف للمتميزات
-الرئيسية الأقسام
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سلسلة كُتيبات أُفق | ثانوية النجف الأشرف للمتميزات</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-English
+  <style>
+    :root {
+      --bg-main: #fbfbfd;
+      --bg-card: #ffffff;
+      --bg-card-subtle: #f4f6f9;
+      --primary: #2d4059;
+      --primary-soft: #eef2f7;
+      --accent-gold: #c59b27;
+      --accent-gold-light: #fef9e7;
+      --accent-gold-hover: #b0891e;
+      --text-main: #1f2937;
+      --text-muted: #5a6a80;
+      --text-light: #8e9cae;
+      --border-color: #e5e9f0;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 24px rgba(45, 64, 89, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-فرصة انضمام مفتوحة
-إعلان إنضمام للفريق التحضيري
-سلسلة كُتيبات أُفق
-كوني جزءًا من الفريق التحضيري لسلسلة كُتيبات أُفق وابدئي رحلتك معنا في الكتابة والتصميم والتدقيق والإعلام.
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+    body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
-التقديم متاح فقط لطالبات الصف الثالث متوسط فما فوق !
-قدّمي طلب الإنضمام الآن
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.85rem 1.5rem;
+    }
+    .nav-container { max-width: 1050px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { font-size: 1.25rem; font-weight: 800; color: var(--primary); cursor: pointer; }
+    .brand-title span.highlight { color: var(--accent-gold); }
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
 
+    .nav-links { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-btn {
+      text-decoration: none; color: var(--text-main);
+      padding: 0.45rem 1.1rem; border-radius: 50px;
+      font-size: 0.88rem; font-weight: 600; cursor: pointer;
+      background: none; border: 1px solid transparent; transition: var(--transition);
+    }
+    .nav-btn:hover { background-color: var(--primary-soft); color: var(--primary); }
+    .nav-btn.active { background-color: var(--primary); color: #fff; }
+    .nav-btn.lang-btn { border: 1px solid var(--border-color); color: var(--text-muted); }
 
-ما الذّي نُعِدّه ؟
-سلسلة كتيبات أُفق هي مشروعنا الأدبيّ والعلميّ الذي يصدر بأيدي طالبات المدرسة أنفُسهنّ ، كتابةً وتدقيقًا وتصميمًا وإعلامًا ، تحت إشراف أكاديمي كامل - وها نحنُ نفتح باب الإنضمام للفريق التحضيري.
+    .main-layout { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; min-height: calc(100vh - 180px); }
+    
+    .badge-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background-color: var(--accent-gold-light); color: var(--accent-gold-hover);
+      border: 1px solid rgba(197, 155, 39, 0.25);
+      padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.25rem;
+    }
 
-الأسئلة الشائعة والأجوبة
-ما الكُتيب؟
+    .hero-section { text-align: center; padding: 1.5rem 1rem 2.5rem; }
+    .hero-title { font-size: 2.4rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
+    .hero-title span { color: var(--accent-gold); }
+    .hero-series-title { font-size: 1.5rem; font-weight: 700; color: var(--accent-gold-hover); margin-bottom: 1.2rem; }
+    .hero-desc { font-size: 1.1rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 2rem; }
 
-الكُتيب هو كتاب قصير يحوي معلومات عن موضوع معين، وتَكون السلسلة من كتابة وتدقيق هيئة طلابية، ويتم الإشراف عليها أكاديميًا.
-ما ماهيّة النشر؟
+    .notice-box {
+      background-color: #fffbeb; border: 1.5px dashed #f59e0b; color: #92400e;
+      padding: 1rem 1.5rem; border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      font-weight: 700; font-size: 0.98rem; max-width: 620px; margin: 0 auto 2.5rem;
+    }
 
-النشر يكون نصف شهري على الموقع الإلكتروني وسينظر في فكرة الطباعة مستقبلًا.
-ما المُحتويات؟
+    .btn {
+      padding: 0.95rem 2.5rem; border-radius: var(--radius-md);
+      font-size: 1.08rem; font-weight: 700; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      transition: var(--transition); border: none; text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #c59b27 0%, #b0891e 100%);
+      color: #ffffff; box-shadow: 0 4px 15px rgba(197, 155, 39, 0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(197, 155, 39, 0.45); }
 
-علمية أدبية شيّقة، وكُل إصدار يختلف في مكنوناته عن الإصدار الذي يسبقه.
-لِمَ قد ترغبين في الإنضمام؟
+    .page-view { display: none; animation: fadeIn 0.35s ease-out; }
+    .page-view.active-view { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-المُشاركة في فريقنا تُحتسب كإنجاز يضُاف الى سجلك المدرسي الذي تحتاجينه عند دخولك الجامعة أو العمل، كما أن تنمية المهارات العملية تكون ميزة في ملفك التعريفي المُخصص للتقديم على وظائف شتّى.
-سلسلة كُتيبات أُفق – ثانوية النجف الأشرف للمتميزات
-Ufuk Booklet Series. All rights reserved 2026 ©
+    .section-head { margin-bottom: 2rem; text-align: center; }
+    .section-head h2 { font-size: 1.8rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .section-head p { color: var(--text-muted); font-size: 0.95rem; }
+
+    .departments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .dept-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition);
+    }
+    .dept-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: rgba(197, 155, 39, 0.4); }
+    .dept-icon-wrapper {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--primary-soft); color: var(--primary);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;
+    }
+    .dept-title { font-size: 1.35rem; font-weight: 700; color: var(--primary); margin-bottom: 0.6rem; }
+    .dept-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+    .dept-btn {
+      width: 100%; padding: 0.75rem 1rem; background: var(--primary-soft);
+      color: var(--primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+      font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; transition: var(--transition);
+    }
+    .dept-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    .content-box-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 2.2rem; margin-top: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);
+    }
+    .content-box-card h3 { font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .content-box-card p { color: var(--text-muted); font-size: 1.02rem; line-height: 1.8; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item { border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: #fff; }
+    .faq-question {
+      padding: 1.1rem 1.4rem; font-weight: 700; color: var(--primary);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      background-color: var(--bg-card-subtle);
+    }
+    .faq-answer { padding: 1.25rem 1.4rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; border-top: 1px solid var(--border-color); display: none; }
+
+    .back-btn-box { margin-bottom: 1.5rem; }
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 0.5rem; background: #fff;
+      border: 1px solid var(--border-color); padding: 0.6rem 1.2rem; border-radius: 50px;
+      color: var(--primary); font-weight: 700; font-size: 0.9rem; cursor: pointer; box-shadow: var(--shadow-sm);
+    }
+
+    .form-card { background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-md); }
+    .form-header { border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+    .form-header h2 { font-size: 1.7rem; font-weight: 800; color: var(--primary); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+    .form-alert { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; padding: 0.9rem 1.2rem; border-radius: var(--radius-sm); font-size: 0.9rem; margin-top: 0.75rem; }
+    .form-alert.warning { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+
+    .form-group { margin-bottom: 1.6rem; }
+    label.field-label { display: block; margin-bottom: 0.5rem; font-weight: 700; font-size: 0.93rem; color: var(--primary); }
+    label.field-label .req { color: #ef4444; margin-right: 0.2rem; }
+
+    input[type="text"], select, textarea {
+      width: 100%; padding: 0.85rem 1.1rem; border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-sm); font-size: 0.95rem; background-color: #fff; color: var(--text-main);
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent-gold); box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15); }
+    textarea { resize: vertical; min-height: 110px; }
+
+    .radio-group { display: flex; flex-direction: column; gap: 0.65rem; margin-top: 0.5rem; }
+    .radio-card { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.85rem 1rem; border: 1.5px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer; }
+    .radio-card:hover { border-color: var(--accent-gold); background-color: var(--accent-gold-light); }
+    .radio-card input { margin-top: 0.25rem; accent-color: var(--accent-gold-hover); }
+
+    .form-subheading { font-size: 1.15rem; font-weight: 700; color: var(--primary); margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary-soft); display: flex; align-items: center; gap: 0.4rem; }
+    .task-box { background: var(--bg-card-subtle); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+    
+    .btn-submit {
+      width: 100%; padding: 1rem; background: linear-gradient(135deg, #c59b27 0%, #b0891e 100%);
+      color: #fff; border: none; border-radius: var(--radius-md); font-size: 1.1rem; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(197, 155, 39, 0.3);
+    }
+
+    .success-panel { text-align: center; padding: 3rem 1.5rem; background: #ffffff; border-radius: var(--radius-lg); border: 1px solid #bbf7d0; box-shadow: var(--shadow-md); }
+    .success-icon { width: 70px; height: 70px; background: #dcfce7; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
+
+    .site-footer { background: #ffffff; border-top: 1px solid var(--border-color); padding: 2.5rem 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+    @media (max-width: 650px) { .hero-title { font-size: 1.8rem; } .form-card { padding: 1.5rem; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand-box" onclick="navigateTo('view-home')">
+        <div class="brand-title">سلسلة كُتيبات <span class="highlight">أُفق</span></div>
+        <div class="brand-subtitle">ثانوية النجف الأشرف للمتميزات</div>
+      </div>
+      <nav class="nav-links">
+        <button id="nav-btn-home" class="nav-btn active" onclick="navigateTo('view-home')">الرئيسية</button>
+        <button id="nav-btn-depts" class="nav-btn" onclick="navigateTo('view-departments')">الأقسام</button>
+        <button class="nav-btn lang-btn" onclick="alert('English version coming soon!')">
+          <i data-lucide="globe" style="width: 16px; height: 16px;"></i> English
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-layout">
+
+    <!-- VIEW 1: HOME -->
+    <div id="view-home" class="page-view active-view">
+      <section class="hero-section">
+        <div class="badge-pill"><i data-lucide="sparkles" style="width: 16px; height: 16px;"></i> فرصة انضمام مفتوحة</div>
+        <h1 class="hero-title">إعلان إنضمام <span>للفريق التحضيري</span></h1>
+        <div class="hero-series-title">سلسلة كُتيبات أُفق</div>
+        <p class="hero-desc">كوني جزءًا من الفريق التحضيري لسلسلة كُتيبات أُفق وابدئي رحلتك معنا في الكتابة والتصميم والتدقيق والإعلام.</p>
+
+        <div class="notice-box">
+          <i data-lucide="alert-circle" style="width: 22px; height: 22px; flex-shrink: 0;"></i>
+          <span>التقديم متاح فقط لطالبات الصف الثالث متوسط فما فوق !</span>
+        </div>
+
+        <button onclick="navigateTo('view-departments')" class="btn btn-primary">
+          قدّمي طلب الإنضمام الآن
+          <i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i>
+        </button>
+      </section>
+
+      <section class="content-box-card">
+        <h3><i data-lucide="book-open" style="color: var(--accent-gold);"></i> ما الذّي نُعِدّه ؟</h3>
+        <p>سلسلة كتيبات أُفق هي مشروعنا الأدبيّ والعلميّ الذي يصدر بأيدي طالبات المدرسة أنفُسهنّ ، كتابةً وتدقيقًا وتصميمًا وإعلامًا ، تحت إشراف أكاديمي كامل - وها نحنُ نفتح باب الإنضمام للفريق التحضيري.</p>
+      </section>
+
+      <section class="content-box-card">
+        <div class="section-head" style="text-align: right; margin-bottom: 1.5rem;">
+          <h2 style="font-size: 1.45rem;"><i data-lucide="help-circle" style="color: var(--accent-gold);"></i> الأسئلة الشائعة والأجوبة</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)"><span>ما الكُتيب؟</span><i data-lucide="chevron-down"></i></div>
+            <div class="faq-answer">الكُتيب هو كتاب قصير يحوي معلومات عن موضوع معين، وتَكون السلسلة من كتابة وتدقيق هيئة طلابية، ويتم الإشراف عليها أكاديميًا.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)"><span>ما ماهيّة النشر؟</span><i data-lucide="chevron-down"></i></div>
+            <div class="faq-answer">النشر يكون نصف شهري على الموقع الإلكتروني وسينظر في فكرة الطباعة مستقبلًا.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)"><span>ما المُحتويات؟</span><i data-lucide="chevron-down"></i></div>
+            <div class="faq-answer">علمية أدبية شيّقة، وكُل إصدار يختلف في مكنوناته عن الإصدار الذي يسبقه.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)"><span>لِمَ قد ترغبين في الإنضمام؟</span><i data-lucide="chevron-down"></i></div>
+            <div class="faq-answer">المُشاركة في فريقنا تُحتسب كإنجاز يضُاف الى سجلك المدرسي الذي تحتاجينه عند دخولك الجامعة أو العمل، كما أن تنمية المهارات العملية تكون ميزة في ملفك التعريفي المُخصص للتقديم على وظائف شتّى.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- VIEW 2: DEPARTMENTS -->
+    <div id="view-departments" class="page-view">
+      <div class="back-btn-box">
+        <button class="btn-back" onclick="navigateTo('view-home')"><i data-lucide="arrow-right"></i> الرجوع إلى الصفحة الرئيسية</button>
+      </div>
+      <div class="section-head">
+        <h2><i data-lucide="layers" style="color: var(--accent-gold);"></i> الأقسام المتاحة للتقديم</h2>
+        <p>اختاري القسم الذي يناسب شغفك ومهاراتك لتعبئة استمارة التقديم</p>
+      </div>
+      <div class="departments-grid">
+        <div class="dept-card">
+          <div><div class="dept-icon-wrapper"><i data-lucide="palette"></i></div><h3 class="dept-title">التصميم</h3><p class="dept-desc">تصميم الصفحات والرسوم والهوية البصرية للعدد وإخراج الكتيب بأبهى صورة.</p></div>
+          <button class="dept-btn" onclick="navigateTo('view-form-design')">تقديم طلب قسم التصميم <i data-lucide="chevron-left"></i></button>
+        </div>
+        <div class="dept-card">
+          <div><div class="dept-icon-wrapper"><i data-lucide="pen-tool"></i></div><h3 class="dept-title">الكتابة</h3><p class="dept-desc">صياغة المقالات والقصص والنصوص العلمية والأدبية الّتي تُثري السلسلة.</p></div>
+          <button class="dept-btn" onclick="navigateTo('view-form-writing')">تقديم طلب قسم الكتابة <i data-lucide="chevron-left"></i></button>
+        </div>
+        <div class="dept-card">
+          <div><div class="dept-icon-wrapper"><i data-lucide="check-check"></i></div><h3 class="dept-title">التدقيق اللغوي</h3><p class="dept-desc">التدقيق اللغوي، كشف الذكاء الإصطناعي والتحقُق من مصادر ونصوص الكاتبات.</p></div>
+          <button class="dept-btn" onclick="navigateTo('view-form-proofreading')">تقديم طلب التدقيق <i data-lucide="chevron-left"></i></button>
+        </div>
+        <div class="dept-card">
+          <div><div class="dept-icon-wrapper"><i data-lucide="megaphone"></i></div><h3 class="dept-title">الإعلام</h3><p class="dept-desc">الترويج للكُتيب والتواصل مع الطالبات والمُجتمع المدرسي وإدارته.</p></div>
+          <button class="dept-btn" onclick="navigateTo('view-form-media')">تقديم طلب قسم الإعلام <i data-lucide="chevron-left"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: FORM DESIGN -->
+    <div id="view-form-design" class="page-view">
+      <div class="back-btn-box"><button class="btn-back" onclick="navigateTo('view-departments')"><i data-lucide="arrow-right"></i> الرجوع للأقسام</button></div>
+      <div class="form-card">
+        <div class="form-header"><h2><i data-lucide="palette" style="color: var(--accent-gold);"></i> إستمارة تقديم قسم التصميم</h2><div class="form-alert">تعبئة هذا النموذج لا تعني القبول الفوري - سيُعلن عن النتائج بعد دراسة الطلبات.</div></div>
+        <form onsubmit="handleFormSubmit(event, 'قسم التصميم')">
+          <input type="hidden" name="القسم" value="قسم التصميم" />
+          <div class="form-group"><label class="field-label">الإسم الكامل <span class="req">*</span></label><input type="text" name="الاسم الكامل" required /></div>
+          <div class="form-group"><label class="field-label">معرف التليجرام <span class="req">*</span></label><input type="text" name="معرف التليجرام" placeholder="@username" dir="ltr" required /></div>
+          <div class="form-group"><label class="field-label">الصف الدراسي <span class="req">*</span></label>
+            <select name="الصف الدراسي" required>
+              <option value="" disabled selected>اختاري صفك الدراسي</option>
+              <option value="الثالث متوسط">الثالث متوسط</option><option value="الرابع الإعدادي">الرابع الإعدادي</option><option value="الخامس الإعدادي">الخامس الإعدادي</option><option value="السادس الإعدادي">السادس الإعدادي</option><option value="خريجة ثانوية">خريجة ثانوية</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="field-label">ما أدوات التصميم التي تستخدمينها ؟</label><input type="text" name="أدوات التصميم" placeholder="Canva, photoshop, illustrator..." /></div>
+          <div class="form-group"><label class="field-label">ماهو إسلوبك في التصميم ؟</label><textarea name="أسلوب التصميم"></textarea></div>
+          <div class="form-group"><label class="field-label">أُذكري بوسترًا أو تصميمًا تعجبين بهِ ولماذا ؟</label><textarea name="تصميم يعجبك"></textarea></div>
+          <div class="form-group"><label class="field-label">ما الدور الذي يؤديه التصميم في سرد قصة الكُتيب وإيضاح فكرته ؟</label><textarea name="دور التصميم"></textarea></div>
+          <button type="submit" class="btn-submit"><i data-lucide="send"></i> إرسال طلب التقديم</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- VIEW 4: FORM WRITING -->
+    <div id="view-form-writing" class="page-view">
+      <div class="back-btn-box"><button class="btn-back" onclick="navigateTo('view-departments')"><i data-lucide="arrow-right"></i> الرجوع للأقسام</button></div>
+      <div class="form-card">
+        <div class="form-header">
+          <h2><i data-lucide="pen-tool" style="color: var(--accent-gold);"></i> استمارة تقديم قسم الكتابة</h2>
+          <div class="form-alert">تعبئة هذا النموذج لا تعني القبول الفوري — سيُعلن عن النتائج بعد دراسة الطلبات.</div>
+          <div class="form-alert warning">⚠️ يُرجى عدم استخدام الذكاء الاصطناعي في كتابة أي جزء من إجاباتك أو المقال.</div>
+        </div>
+        <form onsubmit="handleFormSubmit(event, 'قسم الكتابة')">
+          <input type="hidden" name="القسم" value="قسم الكتابة" />
+          <div class="form-group"><label class="field-label">الاسم الكامل <span class="req">*</span></label><input type="text" name="الاسم الكامل" required /></div>
+          <div class="form-group"><label class="field-label">معرف التليجرام <span class="req">*</span></label><input type="text" name="معرف التليجرام" placeholder="@username" dir="ltr" required /></div>
+          <div class="form-group"><label class="field-label">الصف الدراسي <span class="req">*</span></label>
+            <select name="الصف الدراسي" required>
+              <option value="" disabled selected>اختاري صفك الدراسي</option>
+              <option value="الثالث متوسط">الثالث متوسط</option><option value="الرابع الإعدادي">الرابع الإعدادي</option><option value="الخامس الإعدادي">الخامس الإعدادي</option><option value="السادس الإعدادي">السادس الإعدادي</option><option value="خريجة ثانوية">خريجة ثانوية</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="field-label">خلفيتك القرائية وأنواع الكتب التي تستهويك <span class="req">*</span></label><textarea name="الخلفية القرائية" required></textarea></div>
+          <div class="form-group"><label class="field-label">مستوى اللغة الإنجليزية <span class="req">*</span></label>
+            <select name="مستوى اللغة الإنجليزية" required>
+              <option value="" disabled selected>اختاري مستواكِ التقريبي</option>
+              <option value="A1 / A2">A1 / A2</option><option value="B1 / B2">B1 / B2</option><option value="C1 / C2">C1 / C2</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="field-label">ماذا قرأتِ مؤخرًا؟ <span class="req">*</span></label><input type="text" name="ماذا قرأت مؤخرا" required /></div>
+          <div class="form-subheading"><i data-lucide="edit-3" style="color: var(--accent-gold);"></i> المقال المطلوب – عن الكلمات</div>
+          <div class="task-box"><strong>المهمة:</strong> بأسلوبك الخاص: كيف تلخّصين ما يمكن أن يكون عليه التواصل؟ وكيف تغيّرت طرق التواصل على مر العصور وكيف أثر هذا على العلاقات البشرية ؟ <em>(من دون استخدام الذكاء الاصطناعي)</em></div>
+          <div class="form-group"><textarea rows="6" name="المقال المطلوب" placeholder="اكتبي مقالكِ هنا..." required></textarea></div>
+          <button type="submit" class="btn-submit"><i data-lucide="send"></i> إرسال طلب التقديم</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- VIEW 5: FORM PROOFREADING -->
+    <div id="view-form-proofreading" class="page-view">
+      <div class="back-btn-box"><button class="btn-back" onclick="navigateTo('view-departments')"><i data-lucide="arrow-right"></i> الرجوع للأقسام</button></div>
+      <div class="form-card">
+        <div class="form-header">
+          <h2><i data-lucide="check-check" style="color: var(--accent-gold);"></i> استمارة تقديم قسم التدقيق</h2>
+          <div class="form-alert">تعبئة هذا النموذج لا تعني القبول الفوري — سيُعلن عن النتائج بعد دراسة الطلبات.</div>
+        </div>
+        <form onsubmit="handleFormSubmit(event, 'قسم التدقيق')">
+          <input type="hidden" name="القسم" value="قسم التدقيق" />
+          <div class="form-group"><label class="field-label">الاسم الكامل <span class="req">*</span></label><input type="text" name="الاسم الكامل" required /></div>
+          <div class="form-group"><label class="field-label">معرّف التليجرام <span class="req">*</span></label><input type="text" name="معرف التليجرام" placeholder="@username" dir="ltr" required /></div>
+          <div class="form-group"><label class="field-label">الصف الدراسي <span class="req">*</span></label>
+            <select name="الصف الدراسي" required>
+              <option value="" disabled selected>اختاري صفّك الدراسي</option>
+              <option value="الثالث متوسط">الثالث متوسط</option><option value="الرابع الإعدادي">الرابع الإعدادي</option><option value="الخامس الإعدادي">الخامس الإعدادي</option><option value="السادس الإعدادي">السادس الإعدادي</option><option value="خريجة ثانوية">خريجة ثانوية</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="field-label">ما الذي تركّزين عليه أكثر عند مراجعة كتابة شخص آخر؟ <span class="req">*</span></label><textarea name="التركيز في المراجعة" required></textarea></div>
+          <div class="form-subheading"><i data-lucide="spell-check" style="color: var(--accent-gold);"></i> مهمة التدقيق اللغوي والأسلوبي</div>
+          <div class="task-box"><strong>نص الفقرة المطلوب تصحيحها:</strong> "الكتابة هي وسيلة مهمة جدا للتعبير عن النفس، و هي تساعد الطالبات على انهم يوصلون افكارهم بصورة واضح..."</div>
+          <div class="form-group"><label class="field-label">الصياغة المُصحّحة السليمة <span class="req">*</span></label><textarea rows="4" name="الصياغة المصححة" required></textarea></div>
+          <button type="submit" class="btn-submit"><i data-lucide="send"></i> إرسال طلب التقديم</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- VIEW 6: FORM MEDIA -->
+    <div id="view-form-media" class="page-view">
+      <div class="back-btn-box"><button class="btn-back" onclick="navigateTo('view-departments')"><i data-lucide="arrow-right"></i> الرجوع للأقسام</button></div>
+      <div class="form-card">
+        <div class="form-header"><h2><i data-lucide="megaphone" style="color: var(--accent-gold);"></i> استمارة تقديم قسم الإعلام</h2><div class="form-alert">تعبئة هذا النموذج لا تعني القبول الفوري — سيُعلن عن النتائج بعد دراسة الطلبات.</div></div>
+        <form onsubmit="handleFormSubmit(event, 'قسم الإعلام')">
+          <input type="hidden" name="القسم" value="قسم الإعلام" />
+          <div class="form-group"><label class="field-label">الاسم الكامل <span class="req">*</span></label><input type="text" name="الاسم الكامل" required /></div>
+          <div class="form-group"><label class="field-label">معرّف التليجرام <span class="req">*</span></label><input type="text" name="معرف التليجرام" placeholder="@username" dir="ltr" required /></div>
+          <div class="form-group"><label class="field-label">الصف الدراسي <span class="req">*</span></label>
+            <select name="الصف الدراسي" required>
+              <option value="" disabled selected>اختاري صفّك الدراسي</option>
+              <option value="الثالث متوسط">الثالث متوسط</option><option value="الرابع الإعدادي">الرابع الإعدادي</option><option value="الخامس الإعدادي">الخامس الإعدادي</option><option value="السادس الإعدادي">السادس الإعدادي</option><option value="خريجة ثانوية">خريجة ثانوية</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="field-label">حدّثينا عن نفسك — إلى أي مدى تجيدين التواصل؟ <span class="req">*</span></label><textarea name="مهارات التواصل" required></textarea></div>
+          
+          <div class="form-subheading"><i data-lucide="zap" style="color: var(--accent-gold);"></i> مواقف سريعة واختبار استجابة</div>
+          <div class="form-group">
+            <label class="field-label">1. منشور عن الكتيّب لم يحصل على أي تفاعل تقريبًا. ما أول خطوة تقومين بها؟ <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-card"><input type="radio" name="موقف 1" value="أعدّل الصورة أو النص، وأعيد النشر في وقت أنسب" required /> <span>أعدّل الصورة أو النص، وأعيد النشر في وقت أنسب</span></label>
+              <label class="radio-card"><input type="radio" name="موقف 1" value="أطلب من صديقاتي الإعجاب به ليبدو رائجًا" /> <span>أطلب من صديقاتي الإعجاب به ليبدو رائجًا</span></label>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit"><i data-lucide="send"></i> إرسال طلب التقديم</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- VIEW 7: SUCCESS -->
+    <div id="view-success" class="page-view">
+      <div class="success-panel">
+        <div class="success-icon"><i data-lucide="check" style="width: 38px; height: 38px;"></i></div>
+        <h2 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem;">تم إرسال طلبكِ بنجاح!</h2>
+        <p style="color: var(--text-muted); font-size: 1rem; max-width: 500px; margin: 0 auto 2rem;">
+          شكرًا لتقديمكِ للانضمام إلى الفريق التحضيري لسلسلة كتيبات أُفق. ستصلنا بياناتكِ وستتم مراجعتها قريباً.
+        </p>
+        <button class="btn btn-primary" onclick="navigateTo('view-home')"><i data-lucide="home"></i> العودة إلى الصفحة الرئيسية</button>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div style="font-weight: 700; color: var(--primary); margin-bottom: 0.3rem;">سلسلة كُتيبات أُفق – ثانوية النجف الأشرف للمتميزات</div>
+    <div style="font-size: 0.82rem; color: var(--text-light); direction: ltr;">Ufuk Booklet Series. All rights reserved 2026 ©</div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // ضعي رابط Formspree الخاص بك هنا:
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_ID";
+
+    function navigateTo(viewId) {
+      document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active-view'));
+      const target = document.getElementById(viewId);
+      if (target) target.classList.add('active-view');
+
+      const navHome = document.getElementById('nav-btn-home');
+      const navDepts = document.getElementById('nav-btn-depts');
+      if (viewId === 'view-home') {
+        navHome.classList.add('active'); navDepts.classList.remove('active');
+      } else if (viewId === 'view-departments') {
+        navHome.classList.remove('active'); navDepts.classList.add('active');
+      } else {
+        navHome.classList.remove('active'); navDepts.classList.remove('active');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleFaq(el) {
+      const ans = el.nextElementSibling;
+      const isOpen = ans.style.display === 'block';
+      document.querySelectorAll('.faq-answer').forEach(e => e.style.display = 'none');
+      document.querySelectorAll('.faq-question i').forEach(i => i.style.transform = 'rotate(0deg)');
+      if (!isOpen) {
+        ans.style.display = 'block';
+        el.querySelector('i').style.transform = 'rotate(180deg)';
+      }
+    }
+
+    async function handleFormSubmit(e, deptName) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+
+      btn.disabled = true;
+      btn.innerHTML = 'جاري إرسال الطلب...';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.reset();
+          navigateTo('view-success');
+        } else {
+          alert('حدث خطأ أثناء الإرسال. يرجى التأكد من ضبط رابط Formspree.');
+        }
+      } catch (err) {
+        alert('تعذر الاتصال بالخادم، يرجى المحاولة مرة أخرى.');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }
+    }
+  </script>
+</body>
+</html>
