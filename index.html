@@ -35,7 +35,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
     body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
-    /* الترويسة ثابتة في أعلى الصفحة فقط ولا تتحرك مع السكرول */
     .site-header {
       position: static !important;
       background: #ffffff !important;
@@ -160,7 +159,7 @@
       width: 100%; padding: 0.85rem 1.1rem; border: 1.5px solid var(--border-color);
       border-radius: var(--radius-sm); font-size: 0.95rem; background-color: #fff; color: var(--text-main);
     }
-    input[type="file"] { padding: 0.6rem 0.8rem; background-color: var(--bg-card-subtle); }
+    input[type="file"] { padding: 0.6rem 0.8rem; background-color: var(--bg-card-subtle); cursor: pointer; }
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent-gold); box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15); }
     textarea { resize: vertical; min-height: 110px; }
 
@@ -307,7 +306,7 @@
           <h2><i data-lucide="palette" style="color: var(--accent-gold);"></i> إستمارة تقديم قسم التصميم</h2>
           <div class="form-alert">تعبئة هذا النموذج لا تعني القبول الفوري - سيُعلن عن النتائج بعد دراسة الطلبات.</div>
         </div>
-        <form action="https://formspree.io/f/mrpzazbp" method="POST" enctype="multipart/form-data">
+        <form action="https://formspree.io/f/mrpzazbp" method="POST" enctype="multipart/form-data" onsubmit="return validateFiles(this, 4)">
           <input type="hidden" name="القسم" value="قسم التصميم" />
           
           <div class="form-group">
@@ -354,8 +353,8 @@
 
           <div class="form-group">
             <label class="field-label">أعمال سابقة (إختياري)</label>
-            <span class="field-hint">يمكنكِ رفع حتى أربع صور من تصميماتك السابقة إن وجدت ، إذا لم تملكي أعمالًا سابقة لا بأس فإترُكيهِ فارغًا</span>
-            <input type="file" name="أعمال سابقة" accept="image/*" multiple />
+            <span class="field-hint">( يمكنكِ رفع حتى أربع صور من تصميماتك السابقة إن وجدت ، إذا لم تملكي أعمالًا سابقة لا بأس فإترُكيهِ فارغًا )</span>
+            <input type="file" name="أعمال سابقة[]" accept="image/*,application/pdf" multiple onchange="checkFileLimit(this, 4)" />
           </div>
 
           <button type="submit" class="btn-submit"><i data-lucide="send"></i> إرسال طلب التقديم</button>
@@ -374,7 +373,7 @@
           <div class="form-alert">تعبئة هذا النموذج لا تعني القبول الفوري — سيُعلن عن النتائج بعد دراسة الطلبات.</div>
           <div class="form-alert warning">⚠️ يُرجى عدم استخدام الذكاء الاصطناعي في كتابة أي جزء من إجاباتك أو المقال. سيتم كشف أي نص مكتوب بالذكاء الاصطناعي واستبعاده.</div>
         </div>
-        <form action="https://formspree.io/f/mrpzazbp" method="POST">
+        <form action="https://formspree.io/f/mrpzazbp" method="POST" enctype="multipart/form-data" onsubmit="return validateFiles(this, 4)">
           <input type="hidden" name="القسم" value="قسم الكتابة" />
 
           <div class="form-group">
@@ -405,8 +404,10 @@
           </div>
 
           <div class="form-group">
-            <label class="field-label">هل كتبتِ شيئًا من قبل؟ إن كان كذلك، ما هو؟ (اختياري)</label>
-            <textarea name="كتابات سابقة"></textarea>
+            <label class="field-label">هل كتبتِ شيئًا من قبل ؟ إن كان كذلك ، ماهو ؟ إشرحي عنه أو أضيفيه (اختياري)</label>
+            <textarea name="شرح كتابات سابقة" placeholder="اشرحي عن كتاباتكِ السابقة هنا..."></textarea>
+            <span class="field-hint" style="margin-top: 0.5rem;">أو أرفقي ملفاتكِ/نصوصكِ السابقة (حتى 4 ملفات - PDF أو صور أو مستندات):</span>
+            <input type="file" name="ملفات كتابات سابقة[]" accept=".pdf,.doc,.docx,.txt,image/*" multiple onchange="checkFileLimit(this, 4)" />
           </div>
 
           <div class="form-group">
@@ -444,14 +445,14 @@
           </div>
 
           <div class="form-subheading">
-            <i data-lucide="edit-3" style="color: var(--accent-gold);"></i> المقال المطلوب – عن الكلمات:
+            <i data-lucide="edit-3" style="color: var(--accent-gold);"></i> المقال المطلوب - عن التواصل :-
           </div>
           <div class="task-box">
-            <strong>المهمة:</strong> بأسلوبك الخاص: كيف تلخّصين ما يمكن أن يكون عليه التواصل؟ وكيف تغييرت طرق التواصل على مر العصور وكيف أثر هذا على العلاقات البشرية ؟ <em>(من دون استخدام الذكاء الاصطناعي)</em>
+            <strong>بإسلوبك الخاص :</strong> كيف تُلخصين ما يمكن أن يكون عليه التواصل بين الأشخاص وبين الإنسان نفسه ؟ وكيف تغييرت رؤية الإنسان لنفسه والآخرين وطرق تعبيره عن ما في داخله على مر العصور وكيف أثر هذا الأمر على العلاقات البشرية إيجابيًا وسلبيًا ؟! <em>( من دون إستخدام الذكاء الإصطناعي ومع مُراعاة الإملاء والصياغة المكتوبة )</em>
           </div>
 
           <div class="form-group">
-            <textarea rows="7" name="المقال المطلوب" placeholder="اكتبي مقالكِ هنا..." required></textarea>
+            <textarea rows="8" name="المقال المطلوب" placeholder="اكتبي مقالكِ هنا..." required></textarea>
           </div>
 
           <button type="submit" class="btn-submit"><i data-lucide="send"></i> إرسال طلب التقديم</button>
@@ -516,7 +517,7 @@
             <i data-lucide="spell-check" style="color: var(--accent-gold);"></i> مهمة التدقيق اللغوي والأسلوبي:
           </div>
           <div class="task-box">
-            الفقرة التالية تحتوي على أخطاء إملائية ولغوية وأسلوبية ، أعيدي كتابتها وصياغتها بلغة عربية فصيحة وسليمة:<br><br>
+            الفقرة التالية تحتوي على أخطاء إملائية ولغوية وأسلوبية ، أعيدي كتابتها وصياغتها بلغة عربية فصيحة وسليمة وبإسلوبك الخاص:<br><br>
             <strong>نص الفقرة المطلوب تصحيحها:</strong><br>
             "الكتابة هي وسيلة مهمة جدا للتعبير عن النفس، و هي تساعد الطالبات على انهم يوصلون افكارهم بصورة واضح، وايضا الكتابة بتخلي الشخص يفكر بعمق اكثر عن الموضوع اللي راح يكتب عنه. كل طالبة لازم تتعلم كيف تكتب صح لأنه هذا الشي راح يفيدها بمستقبلها ان شاء الله"
           </div>
@@ -670,6 +671,24 @@
         ans.style.display = 'block';
         el.querySelector('i').style.transform = 'rotate(180deg)';
       }
+    }
+
+    function checkFileLimit(input, maxFiles) {
+      if (input.files.length > maxFiles) {
+        alert('الحد الأقصى المسموح به هو ' + maxFiles + ' ملفات فقط.');
+        input.value = '';
+      }
+    }
+
+    function validateFiles(form, maxFiles) {
+      const fileInputs = form.querySelectorAll('input[type="file"]');
+      for (const input of fileInputs) {
+        if (input.files && input.files.length > maxFiles) {
+          alert('الرجاء عدم تجاوز ' + maxFiles + ' ملفات كحد أقصى.');
+          return false;
+        }
+      }
+      return true;
     }
   </script>
 </body>
